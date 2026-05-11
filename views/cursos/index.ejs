@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<%- include('../partials/head', { title: 'Cursos' }) %>
+<body>
+<%- include('../partials/navbar') %>
+<div class="container my-5">
+    <div class="card p-4">
+        <div class="d-flex flex-column flex-md-row align-items-start justify-content-between gap-3 mb-4">
+            <div>
+                <h1 class="page-title mb-1">Cursos</h1>
+                <p class="text-muted mb-0">Gestión de cursos online con imagen y relación a lecciones.</p>
+            </div>
+            <a href="/cursos/create" class="btn btn-primary btn-lg">Nuevo Curso</a>
+        </div>
+        <div class="row g-4">
+            <% if (cursos.length === 0) { %>
+                <div class="col-12">
+                    <div class="alert alert-info">No hay cursos registrados aún.</div>
+                </div>
+            <% } %>
+
+            <% cursos.forEach(curso => { %>
+                <div class="col-12 col-md-6">
+                    <div class="card h-100">
+                        <% if (curso.imagen_url) { %>
+                            <img src="/uploads/<%= curso.imagen_url %>" class="card-img-top img-card" alt="<%= curso.nombre %>">
+                        <% } %>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title"><%= curso.nombre %></h5>
+                            <div class="mt-auto d-flex gap-2 flex-wrap">
+                                <a href="/cursos/edit/<%= curso.id_curso %>" class="btn btn-outline-primary btn-sm">Editar</a>
+                                <a href="/cursos/delete/<%= curso.id_curso %>" class="btn btn-outline-danger btn-sm">Eliminar</a>
+                                <a href="/lecciones/create?id_curso=<%= curso.id_curso %>" class="btn btn-outline-success btn-sm">Agregar Lección</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+</div>
+<%- include('../partials/footer') %>
+</body>
+</html>
+
+

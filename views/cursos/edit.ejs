@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<%- include('../partials/head', { title: 'Editar Curso' }) %>
+<body>
+<%- include('../partials/navbar') %>
+<div class="container my-5">
+    <div class="card p-4">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <div>
+                <h1 class="page-title mb-1">Editar Curso</h1>
+                <p class="text-muted">Actualiza el nombre o la imagen del curso.</p>
+            </div>
+            <a href="/cursos" class="btn btn-outline-secondary">Volver</a>
+        </div>
+        <form action="/cursos/update/<%= curso.id_curso %>" method="POST" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label class="form-label">Nombre del curso</label>
+                <input type="text" name="nombre" class="form-control" value="<%= curso.nombre %>" required>
+            </div>
+            <div class="mb-4">
+                <label class="form-label">Imagen actual</label>
+                <% if (curso.imagen_url) { %>
+                    <img src="/uploads/<%= curso.imagen_url %>" class="img-card mb-3" alt="Imagen actual del curso">
+                <% } else { %>
+                    <div class="alert alert-info">No hay imagen cargada.</div>
+                <% } %>
+                <label class="form-label">Cambiar imagen</label>
+                <input type="file" id="imagen" name="imagen" class="form-control" accept="image/*">
+            </div>
+            <button type="submit" class="btn btn-primary">Actualizar curso</button>
+        </form>
+    </div>
+</div>
+<%- include('../partials/footer') %>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<%- include('../partials/head', { title: 'Editar Lección' }) %>
+<body>
+<%- include('../partials/navbar') %>
+<div class="container my-5">
+    <div class="card p-4 mx-auto" style="max-width: 720px;">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <div>
+                <h1 class="page-title mb-1">Editar Lección</h1>
+                <p class="text-muted">Modifica los datos de la lección y su curso asociado.</p>
+            </div>
+            <a href="/lecciones" class="btn btn-outline-secondary">Volver</a>
+        </div>
+        <form action="/lecciones/update/<%= leccion.id_leccion %>" method="POST">
+            <div class="mb-3">
+                <label class="form-label">Título</label>
+                <input type="text" name="titulo" class="form-control" value="<%= leccion.titulo %>" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">URL del video</label>
+                <input type="text" name="video_url" class="form-control" value="<%= leccion.video_url %>">
+            </div>
+            <div class="mb-4">
+                <label class="form-label">Curso asociado</label>
+                <select class="form-select" name="id_curso" required>
+                    <% cursos.forEach(curso => { %>
+                        <option value="<%= curso.id_curso %>" <%= curso.id_curso == leccion.id_curso ? 'selected' : '' %>><%= curso.nombre %></option>
+                    <% }) %>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Actualizar lección</button>
+        </form>
+    </div>
+</div>
+<%- include('../partials/footer') %>
+</body>
+</html>

@@ -1,0 +1,84 @@
+:root {
+    color-scheme: dark;
+    --bg: #f4f7fc;
+    --surface: #ffffff;
+    --surface-strong: #e9eff7;
+    --primary: #0d6efd;
+    --primary-soft: #dbe8ff;
+    --text: #1f2937;
+    --muted: #6c757d;
+}
+
+body {
+    background: linear-gradient(180deg, #eef5ff 0%, #f8fbff 100%);
+    color: var(--text);
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1100px;
+}
+
+.card {
+    border: none;
+    box-shadow: 0 18px 50px rgba(17, 29, 71, 0.06);
+}
+
+.card-header {
+    background-color: #ffffff;
+    border-bottom: 1px solid rgba(13, 110, 253, 0.15);
+}
+
+.table thead th {
+    border-bottom: 2px solid rgba(0,0,0,.08);
+}
+
+.table tbody tr:hover {
+    background-color: rgba(13, 110, 253, 0.05);
+}
+
+.btn-primary, .btn-success, .btn-danger, .btn-warning {
+    min-width: 120px;
+}
+
+.form-control,
+.form-select {
+    border-radius: 0.85rem;
+    box-shadow: none;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: rgba(13, 110, 253, 0.5);
+    box-shadow: 0 0 0 0.15rem rgba(13, 110, 253, 0.15);
+}
+
+.img-card {
+    max-width: 100%;
+    object-fit: cover;
+    border-radius: 0.75rem;
+}
+
+.page-title {
+    letter-spacing: -0.03em;
+}
+
+.top-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.footer-note {
+    font-size: 0.95rem;
+    color: var(--muted);
+}
+
+@media (max-width: 768px) {
+    .top-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}

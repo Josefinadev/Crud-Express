@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<%- include('../partials/head', { title: 'Crear Curso' }) %>
+<body>
+<%- include('../partials/navbar') %>
+<div class="container my-5">
+    <div class="card p-4">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <div>
+                <h1 class="page-title mb-1">Nuevo Curso</h1>
+                <p class="text-muted">Añade un curso con imagen para que aparezca en el listado.</p>
+            </div>
+            <a href="/cursos" class="btn btn-outline-secondary">Volver</a>
+        </div>
+        <form action="/cursos/store" method="POST" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label class="form-label">Nombre del curso</label>
+                <input type="text" name="nombre" class="form-control" placeholder="Nombre del curso" required>
+            </div>
+            <div class="mb-4">
+                <label class="form-label">Imagen del curso</label>
+                <input type="file" id="imagen" name="imagen" class="form-control" accept="image/*">
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar curso</button>
+        </form>
+    </div>
+</div>
+<%- include('../partials/footer') %>
+</body>
+</html>
